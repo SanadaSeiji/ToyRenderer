@@ -9,13 +9,13 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+[Dd]ebug/[Dd]ebug/
 
 # Visual Studio 2015 cache/options directory
 .vs/
 
 
-# Output
-*.tga
+
 
 
 
@@ -51,3 +51,12 @@ bld/
 *.exe
 *.out
 *.app
+
+#
+ToyRenderer/*.aps
+ToyRenderer/*.vcxproj
+ToyRenderer/*.vcxproj.filters
+ToyRenderer/*.vcxproj.user
+
+# Output
+ToyRenderer/*.tga
