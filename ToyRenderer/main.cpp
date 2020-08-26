@@ -1,4 +1,4 @@
-// ConsoleApplication1.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// ToyRenderer.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <vector>
@@ -39,16 +39,8 @@ void line(int x0, int y0, int x1, int y1, TGAImage& image, TGAColor color) {
 }
 
 
-int main(int argc, char** argv)
-{
-    if (2 == argc) {
-        model = new Model(argv[1]);
-    }
-    else {
-        model = new Model("obj/african_head.obj");
-    }
 
-    TGAImage image(width, height, TGAImage::RGB);
+void drawWire(Model* model, TGAImage& image) {
 
     for (int i = 0; i < model->nfaces(); i++) {
         std::vector<int> face = model->face(i);
@@ -62,9 +54,26 @@ int main(int argc, char** argv)
             line(x0, y0, x1, y1, image, white);
         }
     }
+}
+
+
+int main(int argc, char** argv)
+{
+    if (2 == argc) {
+        model = new Model(argv[1]);
+    }
+    else {
+        model = new Model("obj/african_head.obj");
+    }
+
+    TGAImage image(width, height, TGAImage::RGB);
+
+    drawWire(model, image);
 
     image.flip_vertically(); // i want to have the origin at the left bottom corner of the image
     image.write_tga_file("output.tga");
+
     delete model;
+    
     return 0;
 }
